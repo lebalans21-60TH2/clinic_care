@@ -1,0 +1,6 @@
+{
+  "name": "ClinicCare - Quản Lý Phòng Khám Tư Nhân",
+  "description": "Hệ thống đặt lịch khám bệnh trực tuyến và quản lý phòng khám tư nhân tích hợp AI Chatbot và mã QR.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
