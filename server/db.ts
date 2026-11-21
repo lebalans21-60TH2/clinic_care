@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
+import dns from 'dns';
 import fs from 'fs';
 import { MongoClient } from 'mongodb';
 import type { Db as MongoDatabase } from 'mongodb';
@@ -864,61 +865,61 @@ export async function createHistoricalAppointments(
     patientPhone: string;
     symptoms: string;
   }> = [
-    // Current week & upcoming days (+3, +4, +5, -3, -4)
-    { offsetDays: 3, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '10:00', status: 'CONFIRMED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Kiểm tra huyết áp định kỳ hàng tháng.' },
-    { offsetDays: 3, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '14:30', status: 'CONFIRMED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Khám hô hấp định kỳ cho bé.' },
-    { offsetDays: 4, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '09:30', status: 'PENDING', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Đo điện tâm đồ kiểm tra nhịp tim.' },
-    { offsetDays: 4, doctorId: 'doc-3', serviceId: 'srv-5', timeSlot: '15:00', status: 'CONFIRMED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Tái khám da liễu và soi da.' },
-    { offsetDays: 5, doctorId: 'doc-4', serviceId: 'srv-7', timeSlot: '08:30', status: 'PENDING', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Nội soi kiểm tra viêm xoang.' },
-    { offsetDays: -3, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '08:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Đau tức ngực nhẹ khi leo cầu thang.' },
-    { offsetDays: -4, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '14:00', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Siêu âm tim kiểm tra định kỳ.' },
-    { offsetDays: -4, doctorId: 'doc-3', serviceId: 'srv-6', timeSlot: '10:30', status: 'CANCELLED', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Điều trị mụn viêm vùng má.' },
+      // Current week & upcoming days (+3, +4, +5, -3, -4)
+      { offsetDays: 3, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '10:00', status: 'CONFIRMED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Kiểm tra huyết áp định kỳ hàng tháng.' },
+      { offsetDays: 3, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '14:30', status: 'CONFIRMED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Khám hô hấp định kỳ cho bé.' },
+      { offsetDays: 4, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '09:30', status: 'PENDING', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Đo điện tâm đồ kiểm tra nhịp tim.' },
+      { offsetDays: 4, doctorId: 'doc-3', serviceId: 'srv-5', timeSlot: '15:00', status: 'CONFIRMED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Tái khám da liễu và soi da.' },
+      { offsetDays: 5, doctorId: 'doc-4', serviceId: 'srv-7', timeSlot: '08:30', status: 'PENDING', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Nội soi kiểm tra viêm xoang.' },
+      { offsetDays: -3, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '08:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Đau tức ngực nhẹ khi leo cầu thang.' },
+      { offsetDays: -4, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '14:00', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Siêu âm tim kiểm tra định kỳ.' },
+      { offsetDays: -4, doctorId: 'doc-3', serviceId: 'srv-6', timeSlot: '10:30', status: 'CANCELLED', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Điều trị mụn viêm vùng má.' },
 
-    // Week -1 (-7 to -13 days)
-    { offsetDays: -7, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Tái khám tăng huyết áp.' },
-    { offsetDays: -8, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '15:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khó ngủ kèm hồi hộp nhịp nhanh.' },
-    { offsetDays: -9, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '09:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Sốt nhẹ và ho đờm 2 ngày.' },
-    { offsetDays: -10, doctorId: 'doc-3', serviceId: 'srv-5', timeSlot: '14:00', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Viêm da tiếp xúc vùng cổ.' },
-    { offsetDays: -11, doctorId: 'doc-4', serviceId: 'srv-7', timeSlot: '10:00', status: 'COMPLETED', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Đau họng và khàn tiếng kéo dài.' },
-    { offsetDays: -12, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '08:00', status: 'COMPLETED', patientName: 'Hoàng Đức Mạnh', patientPhone: '0905667788', symptoms: 'Tầm soát tim mạch tổng quát.' },
+      // Week -1 (-7 to -13 days)
+      { offsetDays: -7, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Tái khám tăng huyết áp.' },
+      { offsetDays: -8, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '15:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khó ngủ kèm hồi hộp nhịp nhanh.' },
+      { offsetDays: -9, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '09:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Sốt nhẹ và ho đờm 2 ngày.' },
+      { offsetDays: -10, doctorId: 'doc-3', serviceId: 'srv-5', timeSlot: '14:00', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Viêm da tiếp xúc vùng cổ.' },
+      { offsetDays: -11, doctorId: 'doc-4', serviceId: 'srv-7', timeSlot: '10:00', status: 'COMPLETED', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Đau họng và khàn tiếng kéo dài.' },
+      { offsetDays: -12, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '08:00', status: 'COMPLETED', patientName: 'Hoàng Đức Mạnh', patientPhone: '0905667788', symptoms: 'Tầm soát tim mạch tổng quát.' },
 
-    // Week -2 (-14 to -20 days)
-    { offsetDays: -15, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Chóng mặt nhẹ khi thay đổi tư thế.' },
-    { offsetDays: -16, doctorId: 'doc-2', serviceId: 'srv-4', timeSlot: '10:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Tư vấn dinh dưỡng cho bé.' },
-    { offsetDays: -17, doctorId: 'doc-4', serviceId: 'srv-8', timeSlot: '15:30', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Rửa xoang điều trị nghẹt mũi.' },
-    { offsetDays: -18, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '14:30', status: 'NO_SHOW', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Đo ECG theo dõi rối loạn nhịp.' },
-    { offsetDays: -19, doctorId: 'doc-3', serviceId: 'srv-6', timeSlot: '09:30', status: 'COMPLETED', patientName: 'Hoàng Đức Mạnh', patientPhone: '0905667788', symptoms: 'Chăm sóc phục hồi hàng rào da.' },
+      // Week -2 (-14 to -20 days)
+      { offsetDays: -15, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Chóng mặt nhẹ khi thay đổi tư thế.' },
+      { offsetDays: -16, doctorId: 'doc-2', serviceId: 'srv-4', timeSlot: '10:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Tư vấn dinh dưỡng cho bé.' },
+      { offsetDays: -17, doctorId: 'doc-4', serviceId: 'srv-8', timeSlot: '15:30', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Rửa xoang điều trị nghẹt mũi.' },
+      { offsetDays: -18, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '14:30', status: 'NO_SHOW', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Đo ECG theo dõi rối loạn nhịp.' },
+      { offsetDays: -19, doctorId: 'doc-3', serviceId: 'srv-6', timeSlot: '09:30', status: 'COMPLETED', patientName: 'Hoàng Đức Mạnh', patientPhone: '0905667788', symptoms: 'Chăm sóc phục hồi hàng rào da.' },
 
-    // Week -3 (-21 to -27 days)
-    { offsetDays: -22, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '08:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Kiểm tra huyết áp sau điều chỉnh thuốc.' },
-    { offsetDays: -23, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '10:30', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Siêu âm tim Doppler màu.' },
-    { offsetDays: -24, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '14:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khám sức khỏe định kỳ cho trẻ.' },
-    { offsetDays: -25, doctorId: 'doc-4', serviceId: 'srv-7', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Ù tai và đau tai phải.' },
-    { offsetDays: -26, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '15:00', status: 'CANCELLED', patientName: 'Hoàng Đức Mạnh', patientPhone: '0905667788', symptoms: 'Tư vấn chỉ số mỡ máu và huyết áp.' },
+      // Week -3 (-21 to -27 days)
+      { offsetDays: -22, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '08:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Kiểm tra huyết áp sau điều chỉnh thuốc.' },
+      { offsetDays: -23, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '10:30', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Siêu âm tim Doppler màu.' },
+      { offsetDays: -24, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '14:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khám sức khỏe định kỳ cho trẻ.' },
+      { offsetDays: -25, doctorId: 'doc-4', serviceId: 'srv-7', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Ù tai và đau tai phải.' },
+      { offsetDays: -26, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '15:00', status: 'CANCELLED', patientName: 'Hoàng Đức Mạnh', patientPhone: '0905667788', symptoms: 'Tư vấn chỉ số mỡ máu và huyết áp.' },
 
-    // Week -4 to -7 (-28 to -55 days, ~1-2 months ago)
-    { offsetDays: -30, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Đánh giá nhịp tim và huyết áp.' },
-    { offsetDays: -32, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '10:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khám ho sốt kéo dài.' },
-    { offsetDays: -35, doctorId: 'doc-3', serviceId: 'srv-5', timeSlot: '14:30', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Soi da và tư vấn điều trị nám.' },
-    { offsetDays: -38, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '08:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Đo điện tâm đồ định kỳ.' },
-    { offsetDays: -41, doctorId: 'doc-4', serviceId: 'srv-7', timeSlot: '15:00', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Nội soi tai mũi họng kiểm tra xoang.' },
-    { offsetDays: -44, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:30', status: 'COMPLETED', patientName: 'Hoàng Đức Mạnh', patientPhone: '0905667788', symptoms: 'Khám tim mạch tổng quát.' },
-    { offsetDays: -47, doctorId: 'doc-2', serviceId: 'srv-4', timeSlot: '10:30', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Tư vấn tiêm chủng và dinh dưỡng.' },
-    { offsetDays: -51, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '14:00', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Theo dõi huyết áp buổi sáng.' },
+      // Week -4 to -7 (-28 to -55 days, ~1-2 months ago)
+      { offsetDays: -30, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Đánh giá nhịp tim và huyết áp.' },
+      { offsetDays: -32, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '10:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khám ho sốt kéo dài.' },
+      { offsetDays: -35, doctorId: 'doc-3', serviceId: 'srv-5', timeSlot: '14:30', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Soi da và tư vấn điều trị nám.' },
+      { offsetDays: -38, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '08:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Đo điện tâm đồ định kỳ.' },
+      { offsetDays: -41, doctorId: 'doc-4', serviceId: 'srv-7', timeSlot: '15:00', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Nội soi tai mũi họng kiểm tra xoang.' },
+      { offsetDays: -44, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:30', status: 'COMPLETED', patientName: 'Hoàng Đức Mạnh', patientPhone: '0905667788', symptoms: 'Khám tim mạch tổng quát.' },
+      { offsetDays: -47, doctorId: 'doc-2', serviceId: 'srv-4', timeSlot: '10:30', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Tư vấn tiêm chủng và dinh dưỡng.' },
+      { offsetDays: -51, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '14:00', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Theo dõi huyết áp buổi sáng.' },
 
-    // Older months (-60 to -150 days, covering past 5 months)
-    { offsetDays: -62, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Tái khám tăng huyết áp.' },
-    { offsetDays: -68, doctorId: 'doc-3', serviceId: 'srv-5', timeSlot: '14:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khám dị ứng da theo mùa.' },
-    { offsetDays: -74, doctorId: 'doc-4', serviceId: 'srv-7', timeSlot: '10:00', status: 'COMPLETED', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Khám viêm mũi dị ứng.' },
-    { offsetDays: -82, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '08:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Siêu âm tim kiểm tra định kỳ.' },
-    { offsetDays: -93, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:30', status: 'COMPLETED', patientName: 'Hoàng Đức Mạnh', patientPhone: '0905667788', symptoms: 'Khám tim mạch và tư vấn thuốc.' },
-    { offsetDays: -98, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '15:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khám hô hấp nhi.' },
-    { offsetDays: -108, doctorId: 'doc-3', serviceId: 'srv-6', timeSlot: '14:30', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Điều trị viêm da cơ địa.' },
-    { offsetDays: -122, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Đo huyết áp và nghe tim phổi.' },
-    { offsetDays: -128, doctorId: 'doc-4', serviceId: 'srv-8', timeSlot: '10:30', status: 'COMPLETED', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Khí dung và rửa mũi xoang.' },
-    { offsetDays: -145, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '08:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Đo ECG tầm soát định kỳ.' },
-    { offsetDays: -152, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '10:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khám sức khỏe tổng quát nhi.' },
-  ];
+      // Older months (-60 to -150 days, covering past 5 months)
+      { offsetDays: -62, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Tái khám tăng huyết áp.' },
+      { offsetDays: -68, doctorId: 'doc-3', serviceId: 'srv-5', timeSlot: '14:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khám dị ứng da theo mùa.' },
+      { offsetDays: -74, doctorId: 'doc-4', serviceId: 'srv-7', timeSlot: '10:00', status: 'COMPLETED', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Khám viêm mũi dị ứng.' },
+      { offsetDays: -82, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '08:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Siêu âm tim kiểm tra định kỳ.' },
+      { offsetDays: -93, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:30', status: 'COMPLETED', patientName: 'Hoàng Đức Mạnh', patientPhone: '0905667788', symptoms: 'Khám tim mạch và tư vấn thuốc.' },
+      { offsetDays: -98, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '15:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khám hô hấp nhi.' },
+      { offsetDays: -108, doctorId: 'doc-3', serviceId: 'srv-6', timeSlot: '14:30', status: 'COMPLETED', patientName: 'Vũ Thị Lan', patientPhone: '0912445566', symptoms: 'Điều trị viêm da cơ địa.' },
+      { offsetDays: -122, doctorId: 'doc-1', serviceId: 'srv-1', timeSlot: '09:00', status: 'COMPLETED', patientName: 'Đỗ Văn Hùng', patientPhone: '0983556677', symptoms: 'Đo huyết áp và nghe tim phổi.' },
+      { offsetDays: -128, doctorId: 'doc-4', serviceId: 'srv-8', timeSlot: '10:30', status: 'COMPLETED', patientName: 'Lê Hoàng Nam', patientPhone: '0907112299', symptoms: 'Khí dung và rửa mũi xoang.' },
+      { offsetDays: -145, doctorId: 'doc-1', serviceId: 'srv-2', timeSlot: '08:30', status: 'COMPLETED', patientName: 'Phạm Minh Tuấn', patientPhone: '0908334455', symptoms: 'Đo ECG tầm soát định kỳ.' },
+      { offsetDays: -152, doctorId: 'doc-2', serviceId: 'srv-3', timeSlot: '10:00', status: 'COMPLETED', patientName: 'Trần Thu Hương', patientPhone: '0918222333', symptoms: 'Khám sức khỏe tổng quát nhi.' },
+    ];
 
   return Promise.all(
     specs.map(async (item, index) => {
@@ -994,8 +995,21 @@ async function getMongoDb(): Promise<MongoDatabase | null> {
     return null;
   }
 
+  // Tự động cấu hình DNS nếu Node.js trên Windows trỏ vào 127.0.0.1 gây lỗi querySrv ECONNREFUSED
+  if (uri.startsWith('mongodb+srv://')) {
+    try {
+      const currentServers = dns.getServers();
+      if (!currentServers.length || currentServers.every((s) => s === '127.0.0.1' || s === '::1')) {
+        dns.setServers(['8.8.8.8', '1.1.1.1']);
+      }
+    } catch {
+      // Bỏ qua nếu môi trường không cho phép setServers
+    }
+  }
+
+  const dbName = process.env.MONGODB_DB_NAME?.trim() || 'master';
+
   try {
-    const dbName = process.env.MONGODB_DB_NAME?.trim() || 'cliniccare';
     mongoClient = new MongoClient(uri, { serverSelectionTimeoutMS: 5000 });
     await mongoClient.connect();
     const database = mongoClient.db(dbName);
@@ -1016,6 +1030,34 @@ async function getMongoDb(): Promise<MongoDatabase | null> {
     console.info(`[ClinicCare DB] Đã kết nối MongoDB thành công (${dbName})`);
     return mongoDbInstance;
   } catch (err) {
+    // Nếu gặp lỗi DNS querySrv, thử chuyển sang DNS công cộng và kết nối lại 1 lần
+    if (uri.startsWith('mongodb+srv://') && String((err as Error).message).includes('querySrv')) {
+      try {
+        dns.setServers(['8.8.8.8', '1.1.1.1']);
+        mongoClient = new MongoClient(uri, { serverSelectionTimeoutMS: 5000 });
+        await mongoClient.connect();
+        const database = mongoClient.db(dbName);
+        await database.command({ ping: 1 });
+        mongoDbInstance = database;
+
+        await Promise.allSettled([
+          database.collection('users').createIndex({ id: 1 }, { unique: true }),
+          database.collection('users').createIndex({ email: 1 }, { unique: true }),
+          database.collection('doctors').createIndex({ id: 1 }, { unique: true }),
+          database.collection('schedules').createIndex({ doctorId: 1 }, { unique: true }),
+          database.collection('appointments').createIndex({ id: 1 }, { unique: true }),
+          database.collection('medicalRecords').createIndex({ id: 1 }, { unique: true }),
+          database.collection('reviews').createIndex({ id: 1 }, { unique: true }),
+          database.collection('reviews').createIndex({ appointmentId: 1 }, { unique: true }),
+        ]);
+
+        console.info(`[ClinicCare DB] Đã kết nối MongoDB thành công (${dbName}) sau khi cập nhật DNS`);
+        return mongoDbInstance;
+      } catch {
+        // Tiếp tục xử lý lỗi ở dưới
+      }
+    }
+
     console.warn(
       `[ClinicCare DB] Không thể kết nối MongoDB (${(err as Error).message}). Chuyển sang lưu trữ dự phòng JSON.`,
     );

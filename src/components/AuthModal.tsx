@@ -106,9 +106,8 @@ export function AuthModal({ isOpen, onClose, onSuccess, initialMode = 'login' }:
                 setMode('login');
                 setError(null);
               }}
-              className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${
-                mode === 'login' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
-              }`}
+              className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${mode === 'login' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                }`}
             >
               Đăng nhập
             </button>
@@ -118,9 +117,8 @@ export function AuthModal({ isOpen, onClose, onSuccess, initialMode = 'login' }:
                 setMode('register');
                 setError(null);
               }}
-              className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${
-                mode === 'register' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
-              }`}
+              className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${mode === 'register' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                }`}
             >
               Đăng ký mới
             </button>
@@ -249,7 +247,7 @@ export function AuthModal({ isOpen, onClose, onSuccess, initialMode = 'login' }:
             </button>
           </form>
 
-          {mode === 'login' && (
+          {/* {mode === 'login' && (
             <div className="pt-4 border-t border-slate-200">
               <p className="text-xs font-medium text-slate-500 mb-2.5">
                 Truy cập nhanh theo vai trò kiểm thử
@@ -269,7 +267,7 @@ export function AuthModal({ isOpen, onClose, onSuccess, initialMode = 'login' }:
                 ))}
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

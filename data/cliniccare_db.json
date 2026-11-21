@@ -84,6 +84,52 @@
       "bloodType": "A+",
       "allergies": "Dị ứng Penicillin nhẹ",
       "createdAt": "2026-11-20T02:50:32.251Z"
+    },
+    {
+      "id": "usr-75dd964c",
+      "email": "khachhang01@gmail.com",
+      "passwordHash": "$2b$10$wCl6rgRPxVBd.voe9gZ2c.ttfzI1AhFlFW57KtvDlN4Mb.PCdpV.S",
+      "fullName": "Hoàng Mai Anh",
+      "phone": "032456789",
+      "role": "PATIENT",
+      "active": true,
+      "gender": "Nữ",
+      "dateOfBirth": "2000-02-22",
+      "address": "",
+      "createdAt": "2026-11-21T01:24:41.701Z"
+    },
+    {
+      "id": "usr-doc-616dac",
+      "email": "lienhoa12@gmail.com",
+      "passwordHash": "$2b$10$dF6VsKPnYSkmvrBMAEMulupuMjRcAkyjglRDFvbN5GrPIs6VDnuN.",
+      "fullName": "Hoàng Liên Hoa",
+      "phone": "032987654",
+      "role": "DOCTOR",
+      "active": true,
+      "createdAt": "2026-11-21T01:32:04.193Z"
+    },
+    {
+      "id": "usr-388d538e",
+      "email": "vana12@gmail.com",
+      "passwordHash": "$2b$10$GYRY/zUGRa6rS3kqbS9Vuum2TbzEcLXf52NURFy/DXvawUaGG087q",
+      "fullName": "Lê Văn A",
+      "phone": "032656789",
+      "role": "PATIENT",
+      "active": true,
+      "gender": "Nam",
+      "dateOfBirth": "2002-06-05",
+      "address": "",
+      "createdAt": "2026-11-21T01:39:09.846Z"
+    },
+    {
+      "id": "usr-doc-6932e5",
+      "email": "vana32@clinic.com",
+      "passwordHash": "$2b$10$FrP4oQMRVj44ZONoolr0ceAUeOnMWCr1tqgAKjcdWjjlKG7e776q.",
+      "fullName": "Lê Văn A",
+      "phone": "032564897",
+      "role": "DOCTOR",
+      "active": true,
+      "createdAt": "2026-11-21T01:44:52.143Z"
     }
   ],
   "specialties": [
@@ -117,6 +163,22 @@
       "slug": "tai-mui-hong",
       "description": "Nội soi tai mũi họng ống mềm không đau, điều trị viêm xoang, viêm amidan và rối loạn tiền đình.",
       "roomNumber": "P.105",
+      "active": true
+    },
+    {
+      "id": "spec-b87b41",
+      "name": "Khoa tâm thần",
+      "slug": "khoa-tam-than",
+      "description": "Điều trị bệnh tâm lý",
+      "roomNumber": "210",
+      "active": true
+    },
+    {
+      "id": "spec-0ef033",
+      "name": "Khoa răng hàm mặt",
+      "slug": "khoa-rang-ham-mat",
+      "description": "Bệnh về răng hàm mặt",
+      "roomNumber": "112",
       "active": true
     }
   ],
@@ -192,6 +254,24 @@
       "priceVnd": 250000,
       "durationMinutes": 30,
       "active": true
+    },
+    {
+      "id": "srv-f9ff02",
+      "specialtyId": "spec-b87b41",
+      "name": "Trầm cảm",
+      "description": "Điều trị chứng trầm cảm",
+      "priceVnd": 650000,
+      "durationMinutes": 30,
+      "active": true
+    },
+    {
+      "id": "srv-394450",
+      "specialtyId": "spec-0ef033",
+      "name": "Nhổ răng",
+      "description": "Nhổ răng, trị răng sâu",
+      "priceVnd": 850000,
+      "durationMinutes": 30,
+      "active": true
     }
   ],
   "doctors": [
@@ -201,16 +281,17 @@
       "fullName": "BS. CKII Trần Văn Minh",
       "title": "Trưởng khoa Tim mạch",
       "specialtyId": "spec-cardio",
-      "experienceYears": 18,
+      "experienceYears": 17,
       "bio": "Nguyên bác sĩ điều trị tại Viện Tim TP.HCM, chuyên sâu về tăng huyết áp kháng trị và bệnh mạch vành.",
-      "consultationFeeVnd": 350000,
-      "avatarUrl": "/src/assets/images/doctor_portrait_cardiology_1795142594653.jpg",
-      "roomNumber": "P.201",
+      "consultationFeeVnd": 550000,
+      "avatarUrl": "https://res.cloudinary.com/drymesbrv/image/upload/v1795225325/cliniccare/doctors/doc-1_1795225324385.jpg",
+      "roomNumber": "P.210",
       "rating": 4.9,
       "active": true,
       "qualifications": "Bác sĩ Chuyên khoa II Nội Tim mạch · Chứng chỉ Siêu âm Tim – Mạch máu",
       "contactEmail": "minh.bs@cliniccare.vn",
-      "reviewCount": 0
+      "reviewCount": 1,
+      "avatarPublicId": "cliniccare/doctors/doc-1_1795225324385"
     },
     {
       "id": "doc-2",
@@ -225,7 +306,7 @@
       "roomNumber": "P.102",
       "rating": 4.9,
       "active": true,
-      "reviewCount": 0
+      "reviewCount": 1
     },
     {
       "id": "doc-3",
@@ -240,7 +321,7 @@
       "roomNumber": "P.204",
       "rating": 4.8,
       "active": true,
-      "reviewCount": 0
+      "reviewCount": 1
     },
     {
       "id": "doc-4",
@@ -255,7 +336,42 @@
       "roomNumber": "P.105",
       "rating": 4.9,
       "active": true,
-      "reviewCount": 0
+      "reviewCount": 1
+    },
+    {
+      "id": "doc-afe42b",
+      "userId": "usr-doc-616dac",
+      "fullName": "Hoàng Liên Hoa",
+      "title": "Bác sĩ chuyên khoa",
+      "qualifications": "Tiến sĩ",
+      "specialtyId": "spec-b87b41",
+      "experienceYears": 18,
+      "bio": "Bác sĩ chuyên khoa giàu kinh nghiệm tại phòng khám ClinicCare.",
+      "consultationFeeVnd": 500000,
+      "avatarUrl": "https://res.cloudinary.com/drymesbrv/image/upload/v1795224723/cliniccare/doctors/doc-afe42b_1795224721691.jpg",
+      "avatarPublicId": "cliniccare/doctors/doc-afe42b_1795224721691",
+      "roomNumber": "P.210",
+      "contactEmail": "lienhoa12@gmail.com",
+      "rating": 5,
+      "reviewCount": 0,
+      "active": true
+    },
+    {
+      "id": "doc-3b6023",
+      "userId": "usr-doc-6932e5",
+      "fullName": "Lê Văn A",
+      "title": "Bác sĩ chuyên khoa",
+      "qualifications": "Giáo sư",
+      "specialtyId": "spec-0ef033",
+      "experienceYears": 20,
+      "bio": "Bác sĩ chuyên khoa giàu kinh nghiệm tại phòng khám ClinicCare.",
+      "consultationFeeVnd": 50000,
+      "avatarUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJEmdUEwh--vWL32SF87y_X49d01pHQNQyENikCXIPyg&s=10",
+      "roomNumber": "P.212",
+      "contactEmail": "vana32@clinic.com",
+      "rating": 5,
+      "reviewCount": 0,
+      "active": true
     }
   ],
   "schedules": [
@@ -482,9 +598,169 @@
         }
       },
       "blockedDates": []
+    },
+    {
+      "doctorId": "doc-afe42b",
+      "slotDurationMinutes": 30,
+      "weeklyShifts": {
+        "0": {
+          "enabled": false,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "1": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "2": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "3": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "4": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "5": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "6": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        }
+      },
+      "blockedDates": []
+    },
+    {
+      "doctorId": "doc-3b6023",
+      "slotDurationMinutes": 30,
+      "weeklyShifts": {
+        "0": {
+          "enabled": false,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "1": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "2": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "3": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "4": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "5": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        },
+        "6": {
+          "enabled": true,
+          "morningStart": "08:00",
+          "morningEnd": "11:30",
+          "afternoonStart": "13:30",
+          "afternoonEnd": "17:00"
+        }
+      },
+      "blockedDates": []
     }
   ],
   "appointments": [
+    {
+      "id": "apt-1d665936",
+      "code": "CC-276312",
+      "patientId": "usr-388d538e",
+      "patientName": "Lê Văn A",
+      "patientPhone": "032656789",
+      "doctorId": "doc-4",
+      "doctorName": "BS. CKII Nguyễn Văn Bình",
+      "specialtyId": "spec-ent",
+      "specialtyName": "Tai Mũi Họng",
+      "serviceId": "srv-8",
+      "serviceName": "Rửa xoang & khí dung điều trị",
+      "servicePriceVnd": 250000,
+      "date": "2026-11-21",
+      "timeSlot": "14:30",
+      "symptoms": "Bị xoang mũi",
+      "status": "PENDING",
+      "qrCodeDataUrl": "data:image/png;base64,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",
+      "qrPayload": "{\"system\":\"ClinicCare\",\"code\":\"CC-276312\",\"appointmentId\":\"apt-1d665936\",\"patientId\":\"usr-388d538e\",\"doctorId\":\"doc-4\",\"date\":\"2026-11-21\",\"timeSlot\":\"14:30\"}",
+      "paymentStatus": "UNPAID",
+      "vietQrDataUrl": "data:image/png;base64,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",
+      "createdAt": "2026-11-21T01:39:18.163Z",
+      "updatedAt": "2026-11-21T01:39:18.163Z"
+    },
+    {
+      "id": "apt-bca851c5",
+      "code": "CC-553405",
+      "patientId": "usr-75dd964c",
+      "patientName": "Hoàng Mai Anh",
+      "patientPhone": "032456789",
+      "doctorId": "doc-1",
+      "doctorName": "BS. CKII Trần Văn Minh",
+      "specialtyId": "spec-cardio",
+      "specialtyName": "Tim mạch",
+      "serviceId": "srv-1",
+      "serviceName": "Khám & tư vấn chuyên khoa Tim mạch",
+      "servicePriceVnd": 350000,
+      "date": "2026-11-21",
+      "timeSlot": "09:30",
+      "symptoms": "Dạo này hơi đau tim",
+      "status": "PENDING",
+      "qrCodeDataUrl": "data:image/png;base64,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",
+      "qrPayload": "{\"system\":\"ClinicCare\",\"code\":\"CC-553405\",\"appointmentId\":\"apt-bca851c5\",\"patientId\":\"usr-75dd964c\",\"doctorId\":\"doc-1\",\"date\":\"2026-11-21\",\"timeSlot\":\"09:30\"}",
+      "paymentStatus": "UNPAID",
+      "vietQrDataUrl": "data:image/png;base64,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",
+      "createdAt": "2026-11-21T01:24:49.528Z",
+      "updatedAt": "2026-11-21T01:24:49.528Z"
+    },
     {
       "id": "apt-4e7ee1cb",
       "code": "CC-965451",
@@ -608,7 +884,8 @@
       "updatedAt": "2026-11-19T10:30:00.000Z",
       "paymentStatus": "PAID",
       "paymentMethod": "CASH",
-      "paidAt": "2026-11-19T10:30:00.000Z"
+      "paidAt": "2026-11-19T10:30:00.000Z",
+      "reviewId": "rev-2"
     },
     {
       "id": "apt-5",
@@ -626,11 +903,11 @@
       "date": "2026-11-22",
       "timeSlot": "08:30",
       "symptoms": "Tái khám theo dõi huyết áp và làm điện tâm đồ theo lịch hẹn.",
-      "status": "PENDING",
+      "status": "CONFIRMED",
       "qrCodeDataUrl": "data:image/png;base64,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",
       "qrPayload": "{\"system\":\"ClinicCare\",\"code\":\"CC-260105\",\"appointmentId\":\"apt-5\",\"patientId\":\"usr-pat-1\",\"doctorId\":\"doc-1\",\"date\":\"2026-11-22\",\"timeSlot\":\"08:30\"}",
       "createdAt": "2026-11-20T02:50:32.251Z",
-      "updatedAt": "2026-11-20T02:50:32.251Z",
+      "updatedAt": "2026-11-21T01:41:06.676Z",
       "paymentStatus": "UNPAID",
       "vietQrDataUrl": "data:image/png;base64,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"
     },
@@ -650,11 +927,11 @@
       "date": "2026-11-23",
       "timeSlot": "10:00",
       "symptoms": "Kiểm tra huyết áp định kỳ hàng tháng.",
-      "status": "CONFIRMED",
+      "status": "COMPLETED",
       "qrCodeDataUrl": "data:image/png;base64,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iMilFiIil1qIiFzqh4fMg9+qK5l0Jf828+CJrmRnHky6kp158ERXsjMPJl3Jzjx4wjzYdSVPdCVvdCVPmAe7rmRiHuy6kol5MOlKTpkHp7qSiXlwyjyYdCWnzIO3upI3FiIil1qIiFxqISJyqYWIyKUWIiKX+uEf0JV8k3nwhHnwCebBW13JW+bBqa5kYh58U1fylnmw60reMg8mXcnOPJh0JTvzYNKVTMyDU13JxDzYmQdvdSWf0JVMzIOJebDrSk4tREQutRARudRCRORSCxGRS/3wQebBW13JN3UlO/Pgra5kYh5MupJTXckp82DSlezMg7fMg0/pSnbmwaeYB7uuZGIefEJX8kRXcso82JkH32QePNGVvLEQEbnUQkTkUgsRkUstREQutRARudQPl+pKJubBrit5wjzYmQeTruRUVzIxD3ZdyaQrmZgHu65kYh681ZXszINJV/JWV7IzD57oSv5t5sFbXcmprmRiHky6kv8lCxGRSy1ERC61EBG51EJE5FI/yP/LPHiiK/kE82DSlezMg0lXMulKTnUlO/Ng0pWc6kre6kom5sFb5sGuKznVlUzMg7e6kol5cKor2ZkHk65kYh6c6kpOmQenupJTCxGRSy1ERC61EBG51EJE5FILEZFL/fBBXclv0JXszINJV/IJ5sGkKznVlUzMg1PmwVtdya4rmZgHp7qSt8yDSVeyMw+e6Ep25sGkK9mZB59iHky6km/qSnbmwad0JW8sREQutRARudRCRORSCxGRSy1ERC71wz/APPjNzIPfyjyYdCU782DSlezMg0lXcso8mJgHb3UlO/Ng0pVMzIM3upJPMQ9OdSVvmQffZB68ZR6c6ko+YSEicqmFiMilFiIil1qIiFzqz19/Q0TkQgsRkUstREQutRARudRCRORSCxGRSy1ERC61EBG51EJE5FILEZFLLURELvV/mLsG6fBiBgkAAAAASUVORK5CYII=",
       "qrPayload": "{\"system\":\"ClinicCare\",\"code\":\"CC-251001\",\"appointmentId\":\"apt-hist-1\",\"patientId\":\"usr-pat-2\",\"doctorId\":\"doc-1\",\"date\":\"2026-11-23\",\"timeSlot\":\"10:00\"}",
       "createdAt": "2026-11-23T10:00:00.000Z",
-      "updatedAt": "2026-11-23T10:00:00.000Z",
+      "updatedAt": "2026-11-21T01:40:56.976Z",
       "paymentStatus": "UNPAID"
     },
     {
@@ -696,11 +973,11 @@
       "date": "2026-11-24",
       "timeSlot": "09:30",
       "symptoms": "Đo điện tâm đồ kiểm tra nhịp tim.",
-      "status": "CONFIRMED",
+      "status": "COMPLETED",
       "qrCodeDataUrl": "data:image/png;base64,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rmRnHrylKznVlUzMg515cKoreco8mHQlf9tCRORSCxGRSy1ERC61EBG51EJE5FI/fMg8+Fd1JZOu5F9lHrzBPPhEV7IzDyZdyc48+IR5sOtKPtGVPNGVfMI82HUlE/Ng15VMzINJV3LKPDjVlUzMg1PmwaQrOWUePNWVPLEQEbnUQkTkUgsRkUstREQutRARudQP/wFdyTeZB58wD54wDyZdyVu6kp15MDEPTnUlE/Pgm7qSp8yDXVfylHkw6Up25sGkK9mZB5OuZGIenOpKJubBzjx4qit5Q1cyMQ8m5sGuKzm1EBG51EJE5FILEZFLLURELvXDi8yDp7qSb+pKdubBxDw41ZW8pSvZmQcT82DSlezMg6fMg7d0JTvz4C3mwa4rmZgHb+hKPtGVnDIPdubBN5kHn+hKnliIiFxqISJyqYWIyKUWIiKXWoiIXOqHS3UlE/PgVFcyMQ925sGkKznVlUzMg11XMjEPJubBriuZmAdPdSU782DSlTzVlezMg090JX+befBUV3KqK5mYB5Ou5L/JQkTkUgsRkUstREQutRARudQPlzIPTnUln+hK3mAenDIPJl3JU13JzjyYdCWnupKnupKJefCUebDrSk51JRPz4KmuZGIenOpKdubBpCuZmAenupJT5sGpruTUQkTkUgsRkUstREQutRARudRCRORSP7yoK/kXdCU78+Ap82DSlezMg0lXcqormZgHT5kHp7qSXVcyMQ9OdSVPmQeTrmRnHnyiK9mZB5OuZGcevMU8mHQl39SV7MyDt3QlTyxERC61EBG51EJE5FILEZFLLURELvXDf4B58C8zD3ZdycQ8ONWVPGUeTLqSnXnwlq5kZx5MzIOnupKdeTDpSibmwRNdyVvMg1NdyVPmwTeZB0+ZB6e6kjcsREQutRARudRCRORSCxGRS/36/QciIhdaiIhcaiEicqmFiMilFiIil1qIiFxqISJyqYWIyKUWIiKXWoiIXGohInKp/wPRoST9k62OVgAAAABJRU5ErkJggg==",
       "qrPayload": "{\"system\":\"ClinicCare\",\"code\":\"CC-251003\",\"appointmentId\":\"apt-hist-3\",\"patientId\":\"usr-pat-2\",\"doctorId\":\"doc-1\",\"date\":\"2026-11-24\",\"timeSlot\":\"09:30\"}",
       "createdAt": "2026-11-24T09:30:00.000Z",
-      "updatedAt": "2026-11-20T08:38:02.754Z",
+      "updatedAt": "2026-11-21T01:26:53.987Z",
       "paymentStatus": "UNPAID"
     },
     {
@@ -746,8 +1023,11 @@
       "qrCodeDataUrl": "data:image/png;base64,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",
       "qrPayload": "{\"system\":\"ClinicCare\",\"code\":\"CC-251005\",\"appointmentId\":\"apt-hist-5\",\"patientId\":\"usr-pat-2\",\"doctorId\":\"doc-4\",\"date\":\"2026-11-25\",\"timeSlot\":\"08:30\"}",
       "createdAt": "2026-11-25T08:30:00.000Z",
-      "updatedAt": "2026-11-20T08:36:47.680Z",
-      "paymentStatus": "UNPAID"
+      "updatedAt": "2026-11-21T01:29:47.745Z",
+      "paymentStatus": "PAID",
+      "vietQrDataUrl": "data:image/png;base64,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",
+      "paymentMethod": "CASH",
+      "paidAt": "2026-11-21T01:29:47.745Z"
     },
     {
       "id": "apt-hist-6",
@@ -773,7 +1053,8 @@
       "updatedAt": "2026-11-17T08:30:00.000Z",
       "paymentStatus": "PAID",
       "paymentMethod": "CASH",
-      "paidAt": "2026-11-17T08:30:00.000Z"
+      "paidAt": "2026-11-17T08:30:00.000Z",
+      "reviewId": "rev-1"
     },
     {
       "id": "apt-hist-7",
@@ -926,7 +1207,8 @@
       "updatedAt": "2026-11-10T14:00:00.000Z",
       "paymentStatus": "PAID",
       "paymentMethod": "CASH",
-      "paidAt": "2026-11-10T14:00:00.000Z"
+      "paidAt": "2026-11-10T14:00:00.000Z",
+      "reviewId": "rev-3"
     },
     {
       "id": "apt-hist-13",
@@ -952,7 +1234,8 @@
       "updatedAt": "2026-11-09T10:00:00.000Z",
       "paymentStatus": "PAID",
       "paymentMethod": "CASH",
-      "paidAt": "2026-11-09T10:00:00.000Z"
+      "paidAt": "2026-11-09T10:00:00.000Z",
+      "reviewId": "rev-4"
     },
     {
       "id": "apt-hist-14",
@@ -1731,6 +2014,72 @@
   ],
   "medicalRecords": [
     {
+      "id": "rec-52c976ba",
+      "appointmentId": "apt-hist-1",
+      "appointmentCode": "CC-251001",
+      "patientId": "usr-pat-2",
+      "patientName": "Trần Thu Hương",
+      "doctorId": "doc-1",
+      "doctorName": "BS. CKII Trần Văn Minh",
+      "specialtyName": "Tim mạch",
+      "visitDate": "2026-11-23",
+      "chiefComplaint": "Kiểm tra huyết áp định kỳ hàng tháng.",
+      "diagnosis": "Xoang mũi",
+      "icdCode": "",
+      "clinicalNotes": "Tránh tắm nước lạnh",
+      "vitalSigns": {
+        "bloodPressure": "120/80 mmHg",
+        "heartRate": "76 bpm",
+        "temperature": "36.6 °C",
+        "weight": "65 kg"
+      },
+      "prescriptions": [
+        {
+          "medicine": "panadont",
+          "dosage": "2",
+          "frequency": "Sáng 1, tối 1",
+          "duration": "2",
+          "note": ""
+        }
+      ],
+      "followUpDate": "2026-11-24",
+      "createdAt": "2026-11-21T01:40:56.976Z",
+      "updatedAt": "2026-11-21T01:40:56.976Z"
+    },
+    {
+      "id": "rec-b226080f",
+      "appointmentId": "apt-hist-3",
+      "appointmentCode": "CC-251003",
+      "patientId": "usr-pat-2",
+      "patientName": "Lê Hoàng Nam",
+      "doctorId": "doc-1",
+      "doctorName": "BS. CKII Trần Văn Minh",
+      "specialtyName": "Tim mạch",
+      "visitDate": "2026-11-24",
+      "chiefComplaint": "Đo điện tâm đồ kiểm tra nhịp tim.",
+      "diagnosis": "Đau tim",
+      "icdCode": "",
+      "clinicalNotes": "nghỉ ngơi đầy đủ",
+      "vitalSigns": {
+        "bloodPressure": "120/80 mmHg",
+        "heartRate": "76 bpm",
+        "temperature": "36.6 °C",
+        "weight": "65 kg"
+      },
+      "prescriptions": [
+        {
+          "medicine": "pharadont",
+          "dosage": "2",
+          "frequency": "Sáng 1, tối 1",
+          "duration": "5 ngày",
+          "note": ""
+        }
+      ],
+      "followUpDate": "2026-11-26",
+      "createdAt": "2026-11-21T01:26:53.987Z",
+      "updatedAt": "2026-11-21T01:26:53.987Z"
+    },
+    {
       "id": "rec-1",
       "appointmentId": "apt-1",
       "appointmentCode": "CC-260101",
@@ -1810,8 +2159,129 @@
       "updatedAt": "2026-11-19T10:30:00.000Z"
     }
   ],
-  "reviews": [],
+  "reviews": [
+    {
+      "id": "rev-1",
+      "appointmentId": "apt-hist-6",
+      "doctorId": "doc-1",
+      "patientId": "usr-pat-2",
+      "patientName": "Phạm Minh Tuấn",
+      "rating": 5,
+      "comment": "Bác sĩ Minh thăm khám kỹ lưỡng, giải thích rõ ràng phác đồ kiểm soát huyết áp.",
+      "createdAt": "2026-11-19T10:15:00.000Z"
+    },
+    {
+      "id": "rev-2",
+      "appointmentId": "apt-4",
+      "doctorId": "doc-2",
+      "patientId": "usr-pat-2",
+      "patientName": "Trần Thu Hương",
+      "rating": 5,
+      "comment": "Bác sĩ Linh rất nhẹ nhàng với trẻ nhỏ, kê đơn ít kháng sinh và tư vấn chăm sóc tại nhà chi tiết.",
+      "createdAt": "2026-11-20T11:00:00.000Z"
+    },
+    {
+      "id": "rev-3",
+      "appointmentId": "apt-hist-12",
+      "doctorId": "doc-3",
+      "patientId": "usr-pat-2",
+      "patientName": "Vũ Thị Lan",
+      "rating": 5,
+      "comment": "Soi da chi tiết, hướng dẫn cách phục hồi hàng rào da dễ áp dụng.",
+      "createdAt": "2026-11-19T16:00:00.000Z"
+    },
+    {
+      "id": "rev-4",
+      "appointmentId": "apt-hist-13",
+      "doctorId": "doc-4",
+      "patientId": "usr-pat-2",
+      "patientName": "Lê Hoàng Nam",
+      "rating": 5,
+      "comment": "Nội soi tai mũi họng nhẹ nhàng không khó chịu, phòng khám sạch sẽ đúng giờ.",
+      "createdAt": "2026-11-19T15:30:00.000Z"
+    }
+  ],
   "notifications": [
+    {
+      "id": "noti-fd685959",
+      "userId": "usr-pat-1",
+      "title": "Cập nhật lịch hẹn CC-260105: Đã xác nhận",
+      "message": "Lịch khám với BS. CKII Trần Văn Minh ngày 2026-11-22 lúc 08:30 đã chuyển sang trạng thái Đã xác nhận.",
+      "type": "APPOINTMENT",
+      "relatedId": "apt-5",
+      "read": false,
+      "createdAt": "2026-11-21T01:41:06.676Z"
+    },
+    {
+      "id": "noti-fb12e98b",
+      "userId": "usr-pat-2",
+      "title": "Hồ sơ khám bệnh CC-251001 đã sẵn sàng",
+      "message": "BS. CKII Trần Văn Minh đã hoàn tất chẩn đoán và đơn thuốc cho lần khám ngày 2026-11-23.",
+      "type": "MEDICAL_RECORD",
+      "relatedId": "rec-52c976ba",
+      "read": false,
+      "createdAt": "2026-11-21T01:40:56.976Z"
+    },
+    {
+      "id": "noti-01c2aaa4",
+      "userId": "usr-388d538e",
+      "title": "Đặt lịch thành công (CC-276312)",
+      "message": "Lịch khám với BS. CKII Nguyễn Văn Bình vào 14:30 ngày 2026-11-21 đang chờ xác nhận. Vui lòng mang mã QR khi đến khám.",
+      "type": "APPOINTMENT",
+      "relatedId": "apt-1d665936",
+      "read": false,
+      "createdAt": "2026-11-21T01:39:18.163Z"
+    },
+    {
+      "id": "noti-76151143",
+      "userId": "usr-doc-4",
+      "title": "Lịch hẹn mới CC-276312",
+      "message": "Bệnh nhân Lê Văn A đặt khám lúc 14:30 ngày 2026-11-21. Triệu chứng: Bị xoang mũi",
+      "type": "APPOINTMENT",
+      "relatedId": "apt-1d665936",
+      "read": false,
+      "createdAt": "2026-11-21T01:39:18.163Z"
+    },
+    {
+      "id": "noti-1bdc5e55",
+      "userId": "usr-pat-2",
+      "title": "Xác nhận thanh toán (CC-251005)",
+      "message": "Khoản phí 380.000 ₫ cho dịch vụ \"Khám & Nội soi Tai Mũi Họng\" đã được thanh toán thành công.",
+      "type": "APPOINTMENT",
+      "relatedId": "apt-hist-5",
+      "read": false,
+      "createdAt": "2026-11-21T01:29:47.760Z"
+    },
+    {
+      "id": "noti-cf3be913",
+      "userId": "usr-pat-2",
+      "title": "Hồ sơ khám bệnh CC-251003 đã sẵn sàng",
+      "message": "BS. CKII Trần Văn Minh đã hoàn tất chẩn đoán và đơn thuốc cho lần khám ngày 2026-11-24.",
+      "type": "MEDICAL_RECORD",
+      "relatedId": "rec-b226080f",
+      "read": false,
+      "createdAt": "2026-11-21T01:26:53.987Z"
+    },
+    {
+      "id": "noti-03559549",
+      "userId": "usr-75dd964c",
+      "title": "Đặt lịch thành công (CC-553405)",
+      "message": "Lịch khám với BS. CKII Trần Văn Minh vào 09:30 ngày 2026-11-21 đang chờ xác nhận. Vui lòng mang mã QR khi đến khám.",
+      "type": "APPOINTMENT",
+      "relatedId": "apt-bca851c5",
+      "read": false,
+      "createdAt": "2026-11-21T01:24:49.528Z"
+    },
+    {
+      "id": "noti-a440c45c",
+      "userId": "usr-doc-1",
+      "title": "Lịch hẹn mới CC-553405",
+      "message": "Bệnh nhân Hoàng Mai Anh đặt khám lúc 09:30 ngày 2026-11-21. Triệu chứng: Dạo này hơi đau tim",
+      "type": "APPOINTMENT",
+      "relatedId": "apt-bca851c5",
+      "read": true,
+      "createdAt": "2026-11-21T01:24:49.528Z"
+    },
     {
       "id": "noti-b045305f",
       "userId": "usr-pat-1",
@@ -1934,6 +2404,479 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "log-1e58a174",
+      "timestamp": "2026-11-21T01:44:52.143Z",
+      "actorId": "usr-admin-1",
+      "actorName": "Nguyễn Minh Quân",
+      "actorRole": "ADMIN",
+      "action": "CREATE_DOCTOR",
+      "targetType": "USER",
+      "targetId": "doc-3b6023",
+      "detail": "Thêm bác sĩ Lê Văn A (Khoa răng hàm mặt)"
+    },
+    {
+      "id": "log-85ef4ca3",
+      "timestamp": "2026-11-21T01:43:42.681Z",
+      "actorId": "usr-admin-1",
+      "actorName": "Nguyễn Minh Quân",
+      "actorRole": "ADMIN",
+      "action": "CREATE_SERVICE",
+      "targetType": "SERVICE",
+      "targetId": "srv-394450",
+      "detail": "Thêm dịch vụ \"Nhổ răng\" (850.000đ)"
+    },
+    {
+      "id": "log-f79a18a1",
+      "timestamp": "2026-11-21T01:43:15.358Z",
+      "actorId": "usr-admin-1",
+      "actorName": "Nguyễn Minh Quân",
+      "actorRole": "ADMIN",
+      "action": "CREATE_SPECIALTY",
+      "targetType": "SPECIALTY",
+      "targetId": "spec-0ef033",
+      "detail": "Thêm chuyên khoa Khoa răng hàm mặt (112)"
+    },
+    {
+      "id": "log-340112e7",
+      "timestamp": "2026-11-21T01:42:33.836Z",
+      "actorId": "usr-admin-1",
+      "actorName": "Nguyễn Minh Quân",
+      "actorRole": "ADMIN",
+      "action": "LOGIN",
+      "targetType": "AUTH",
+      "targetId": "usr-admin-1",
+      "detail": "Đăng nhập hệ thống với vai trò ADMIN"
+    },
+    {
+      "id": "log-9b0827bd",
+      "timestamp": "2026-11-21T01:42:06.397Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "UPDATE_DOCTOR_PROFILE",
+      "targetType": "USER",
+      "targetId": "doc-1",
+      "detail": "Cập nhật thông tin bác sĩ BS. CKII Trần Văn Minh (P.210)"
+    },
+    {
+      "id": "log-9a5d945e",
+      "timestamp": "2026-11-21T01:41:29.682Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "UPDATE_SCHEDULE",
+      "targetType": "SCHEDULE",
+      "targetId": "doc-1",
+      "detail": "Cập nhật lịch làm việc bác sĩ doc-1"
+    },
+    {
+      "id": "log-668859e8",
+      "timestamp": "2026-11-21T01:41:19.693Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "READ_MEDICAL_RECORD",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "rec-52c976ba",
+      "detail": "Xem chi tiết hồ sơ bệnh án CC-251001 của Trần Thu Hương"
+    },
+    {
+      "id": "log-d056ca34",
+      "timestamp": "2026-11-21T01:41:09.390Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "LIST_MEDICAL_RECORDS",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "scope:DOCTOR",
+      "detail": "Truy cập danh sách hồ sơ bệnh án (4 hồ sơ thuộc phạm vi phân quyền)"
+    },
+    {
+      "id": "log-ec2f3bcc",
+      "timestamp": "2026-11-21T01:41:06.676Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "APPOINTMENT_CONFIRMED",
+      "targetType": "APPOINTMENT",
+      "targetId": "apt-5",
+      "detail": "Chuyển trạng thái CC-260105: PENDING -> CONFIRMED"
+    },
+    {
+      "id": "log-67c1578b",
+      "timestamp": "2026-11-21T01:40:59.582Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "LIST_MEDICAL_RECORDS",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "scope:DOCTOR",
+      "detail": "Truy cập danh sách hồ sơ bệnh án (4 hồ sơ thuộc phạm vi phân quyền)"
+    },
+    {
+      "id": "log-ba1a9e9c",
+      "timestamp": "2026-11-21T01:40:56.976Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "CREATE_MEDICAL_RECORD",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "rec-52c976ba",
+      "detail": "Tạo hồ sơ bệnh án cho Trần Thu Hương (CC-251001) - Chẩn đoán: Xoang mũi"
+    },
+    {
+      "id": "log-e0b91fe5",
+      "timestamp": "2026-11-21T01:40:14.480Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "READ_MEDICAL_RECORD",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "rec-b226080f",
+      "detail": "Xem chi tiết hồ sơ bệnh án CC-251003 của Lê Hoàng Nam"
+    },
+    {
+      "id": "log-cb8b06e7",
+      "timestamp": "2026-11-21T01:40:08.340Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "LIST_MEDICAL_RECORDS",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "scope:DOCTOR",
+      "detail": "Truy cập danh sách hồ sơ bệnh án (3 hồ sơ thuộc phạm vi phân quyền)"
+    },
+    {
+      "id": "log-f8f7a7e8",
+      "timestamp": "2026-11-21T01:40:05.807Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "LOGIN",
+      "targetType": "AUTH",
+      "targetId": "usr-doc-1",
+      "detail": "Đăng nhập hệ thống với vai trò DOCTOR"
+    },
+    {
+      "id": "log-91296372",
+      "timestamp": "2026-11-21T01:39:32.025Z",
+      "actorId": "usr-388d538e",
+      "actorName": "Lê Văn A",
+      "actorRole": "PATIENT",
+      "action": "LIST_MEDICAL_RECORDS",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "scope:PATIENT",
+      "detail": "Truy cập danh sách hồ sơ bệnh án (0 hồ sơ thuộc phạm vi phân quyền)"
+    },
+    {
+      "id": "log-5aa5c814",
+      "timestamp": "2026-11-21T01:39:18.163Z",
+      "actorId": "usr-388d538e",
+      "actorName": "Lê Văn A",
+      "actorRole": "PATIENT",
+      "action": "CREATE_APPOINTMENT",
+      "targetType": "APPOINTMENT",
+      "targetId": "apt-1d665936",
+      "detail": "Đặt lịch CC-276312 với BS. CKII Nguyễn Văn Bình (2026-11-21 14:30)"
+    },
+    {
+      "id": "log-15bbd421",
+      "timestamp": "2026-11-21T01:39:09.846Z",
+      "actorId": "usr-388d538e",
+      "actorName": "Lê Văn A",
+      "actorRole": "PATIENT",
+      "action": "REGISTER_PATIENT",
+      "targetType": "AUTH",
+      "targetId": "usr-388d538e",
+      "detail": "Đăng ký tài khoản bệnh nhân mới (vana12@gmail.com)"
+    },
+    {
+      "id": "log-01cf410f",
+      "timestamp": "2026-11-21T01:32:16.678Z",
+      "actorId": "usr-admin-1",
+      "actorName": "Nguyễn Minh Quân",
+      "actorRole": "ADMIN",
+      "action": "UPDATE_DOCTOR_PROFILE",
+      "targetType": "USER",
+      "targetId": "doc-afe42b",
+      "detail": "Cập nhật thông tin bác sĩ Hoàng Liên Hoa (P.210)"
+    },
+    {
+      "id": "log-1378e2a0",
+      "timestamp": "2026-11-21T01:32:04.193Z",
+      "actorId": "usr-admin-1",
+      "actorName": "Nguyễn Minh Quân",
+      "actorRole": "ADMIN",
+      "action": "CREATE_DOCTOR",
+      "targetType": "USER",
+      "targetId": "doc-afe42b",
+      "detail": "Thêm bác sĩ Hoàng Liên Hoa (Khoa tâm thần)"
+    },
+    {
+      "id": "log-3289ed31",
+      "timestamp": "2026-11-21T01:30:54.662Z",
+      "actorId": "usr-admin-1",
+      "actorName": "Nguyễn Minh Quân",
+      "actorRole": "ADMIN",
+      "action": "CREATE_SERVICE",
+      "targetType": "SERVICE",
+      "targetId": "srv-f9ff02",
+      "detail": "Thêm dịch vụ \"Trầm cảm\" (650.000đ)"
+    },
+    {
+      "id": "log-d0c3d6a8",
+      "timestamp": "2026-11-21T01:30:26.657Z",
+      "actorId": "usr-admin-1",
+      "actorName": "Nguyễn Minh Quân",
+      "actorRole": "ADMIN",
+      "action": "CREATE_SPECIALTY",
+      "targetType": "SPECIALTY",
+      "targetId": "spec-b87b41",
+      "detail": "Thêm chuyên khoa Khoa tâm thần (210)"
+    },
+    {
+      "id": "log-6f9e26c0",
+      "timestamp": "2026-11-21T01:29:47.760Z",
+      "actorId": "usr-admin-1",
+      "actorName": "Nguyễn Minh Quân",
+      "actorRole": "ADMIN",
+      "action": "UPDATE_PAYMENT",
+      "targetType": "APPOINTMENT",
+      "targetId": "apt-hist-5",
+      "detail": "Cập nhật thanh toán CC-251005: PAID (CASH)"
+    },
+    {
+      "id": "log-1653fe66",
+      "timestamp": "2026-11-21T01:29:21.826Z",
+      "actorId": "usr-admin-1",
+      "actorName": "Nguyễn Minh Quân",
+      "actorRole": "ADMIN",
+      "action": "LOGIN",
+      "targetType": "AUTH",
+      "targetId": "usr-admin-1",
+      "detail": "Đăng nhập hệ thống với vai trò ADMIN"
+    },
+    {
+      "id": "log-87125221",
+      "timestamp": "2026-11-21T01:28:53.069Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "LIST_MEDICAL_RECORDS",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "scope:DOCTOR",
+      "detail": "Truy cập danh sách hồ sơ bệnh án (3 hồ sơ thuộc phạm vi phân quyền)"
+    },
+    {
+      "id": "log-b942b937",
+      "timestamp": "2026-11-21T01:28:35.327Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "UPDATE_DOCTOR_PROFILE",
+      "targetType": "USER",
+      "targetId": "doc-1",
+      "detail": "Cập nhật thông tin bác sĩ BS. CKII Trần Văn Minh (P.210)"
+    },
+    {
+      "id": "log-061bcc3b",
+      "timestamp": "2026-11-21T01:27:38.304Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "UPDATE_SCHEDULE",
+      "targetType": "SCHEDULE",
+      "targetId": "doc-1",
+      "detail": "Cập nhật lịch làm việc bác sĩ doc-1"
+    },
+    {
+      "id": "log-99dcfa9c",
+      "timestamp": "2026-11-21T01:27:28.899Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "READ_MEDICAL_RECORD",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "rec-b226080f",
+      "detail": "Xem chi tiết hồ sơ bệnh án CC-251003 của Lê Hoàng Nam"
+    },
+    {
+      "id": "log-da04f968",
+      "timestamp": "2026-11-21T01:27:02.757Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "READ_MEDICAL_RECORD",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "rec-b226080f",
+      "detail": "Xem chi tiết hồ sơ bệnh án CC-251003 của Lê Hoàng Nam"
+    },
+    {
+      "id": "log-cea341d0",
+      "timestamp": "2026-11-21T01:26:57.186Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "LIST_MEDICAL_RECORDS",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "scope:DOCTOR",
+      "detail": "Truy cập danh sách hồ sơ bệnh án (3 hồ sơ thuộc phạm vi phân quyền)"
+    },
+    {
+      "id": "log-2f78725e",
+      "timestamp": "2026-11-21T01:26:53.987Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "CREATE_MEDICAL_RECORD",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "rec-b226080f",
+      "detail": "Tạo hồ sơ bệnh án cho Lê Hoàng Nam (CC-251003) - Chẩn đoán: Đau tim"
+    },
+    {
+      "id": "log-779c2c3a",
+      "timestamp": "2026-11-21T01:26:00.523Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "LIST_MEDICAL_RECORDS",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "scope:DOCTOR",
+      "detail": "Truy cập danh sách hồ sơ bệnh án (2 hồ sơ thuộc phạm vi phân quyền)"
+    },
+    {
+      "id": "log-578c612f",
+      "timestamp": "2026-11-21T01:25:57.487Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "LOGIN",
+      "targetType": "AUTH",
+      "targetId": "usr-doc-1",
+      "detail": "Đăng nhập hệ thống với vai trò DOCTOR"
+    },
+    {
+      "id": "log-8d3acb64",
+      "timestamp": "2026-11-21T01:25:31.920Z",
+      "actorId": "usr-75dd964c",
+      "actorName": "Hoàng Mai Anh",
+      "actorRole": "PATIENT",
+      "action": "LIST_MEDICAL_RECORDS",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "scope:PATIENT",
+      "detail": "Truy cập danh sách hồ sơ bệnh án (0 hồ sơ thuộc phạm vi phân quyền)"
+    },
+    {
+      "id": "log-cc436ba1",
+      "timestamp": "2026-11-21T01:25:01.694Z",
+      "actorId": "usr-75dd964c",
+      "actorName": "Hoàng Mai Anh",
+      "actorRole": "PATIENT",
+      "action": "LIST_MEDICAL_RECORDS",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "scope:PATIENT",
+      "detail": "Truy cập danh sách hồ sơ bệnh án (0 hồ sơ thuộc phạm vi phân quyền)"
+    },
+    {
+      "id": "log-02e5aef9",
+      "timestamp": "2026-11-21T01:24:49.528Z",
+      "actorId": "usr-75dd964c",
+      "actorName": "Hoàng Mai Anh",
+      "actorRole": "PATIENT",
+      "action": "CREATE_APPOINTMENT",
+      "targetType": "APPOINTMENT",
+      "targetId": "apt-bca851c5",
+      "detail": "Đặt lịch CC-553405 với BS. CKII Trần Văn Minh (2026-11-21 09:30)"
+    },
+    {
+      "id": "log-fbfc95c3",
+      "timestamp": "2026-11-21T01:24:41.701Z",
+      "actorId": "usr-75dd964c",
+      "actorName": "Hoàng Mai Anh",
+      "actorRole": "PATIENT",
+      "action": "REGISTER_PATIENT",
+      "targetType": "AUTH",
+      "targetId": "usr-75dd964c",
+      "detail": "Đăng ký tài khoản bệnh nhân mới (khachhang01@gmail.com)"
+    },
+    {
+      "id": "log-c235733b",
+      "timestamp": "2026-11-21T01:18:22.160Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "READ_MEDICAL_RECORD",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "rec-1",
+      "detail": "Xem chi tiết hồ sơ bệnh án CC-260101 của Nguyễn Văn An"
+    },
+    {
+      "id": "log-21b9d472",
+      "timestamp": "2026-11-21T01:17:51.776Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "READ_MEDICAL_RECORD",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "rec-2",
+      "detail": "Xem chi tiết hồ sơ bệnh án CC-260104 của Trần Thu Hương"
+    },
+    {
+      "id": "log-72836ec9",
+      "timestamp": "2026-11-21T01:17:49.011Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "READ_MEDICAL_RECORD",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "rec-2",
+      "detail": "Xem chi tiết hồ sơ bệnh án CC-260104 của Trần Thu Hương"
+    },
+    {
+      "id": "log-5f330f58",
+      "timestamp": "2026-11-21T01:17:46.632Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "READ_MEDICAL_RECORD",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "rec-2",
+      "detail": "Xem chi tiết hồ sơ bệnh án CC-260104 của Trần Thu Hương"
+    },
+    {
+      "id": "log-3dd3965e",
+      "timestamp": "2026-11-21T01:17:44.172Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "READ_MEDICAL_RECORD",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "rec-2",
+      "detail": "Xem chi tiết hồ sơ bệnh án CC-260104 của Trần Thu Hương"
+    },
+    {
+      "id": "log-35f4797f",
+      "timestamp": "2026-11-21T01:17:27.860Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "LIST_MEDICAL_RECORDS",
+      "targetType": "MEDICAL_RECORD",
+      "targetId": "scope:DOCTOR",
+      "detail": "Truy cập danh sách hồ sơ bệnh án (2 hồ sơ thuộc phạm vi phân quyền)"
+    },
+    {
+      "id": "log-464a25ba",
+      "timestamp": "2026-11-21T01:17:25.129Z",
+      "actorId": "usr-doc-1",
+      "actorName": "BS. CKII Trần Văn Minh",
+      "actorRole": "DOCTOR",
+      "action": "LOGIN",
+      "targetType": "AUTH",
+      "targetId": "usr-doc-1",
+      "detail": "Đăng nhập hệ thống với vai trò DOCTOR"
+    },
     {
       "id": "log-595c9d5e",
       "timestamp": "2026-11-20T08:48:40.794Z",

@@ -1,0 +1,53 @@
+1. Yêu cầu môi trường trước khi cài đặt
+Node.js: Khuyến nghị phiên bản LTS v20.x hoặc v22.x 
+
+2. Mở dự án & Cài đặt thư viện
+Tải / Giải nén (hoặc git clone ...) về máy.
+Mở IDE → chọn File > Open Folder... → trỏ vào thư mục gốc của dự án (nơi chứa package.json và server.ts).
+Mở Terminal tích hợp trong IDE (Ctrl + ~ trên Windows hoặc Cmd + ~ trên macOS).
+
+Chạy lệnh cài đặt toàn bộ dependencies:
+
+npm install
+
+3. Cấu hình biến môi trường (.env)
+Tại thư mục gốc, sao chép file .env.example thành một file mới tên là .env:
+macOS / Linux: cp .env.example .env
+Windows (PowerShell): Copy-Item .env.example .env
+Mở file .env và điền các giá trị phù hợp:
+Env
+
+# Địa chỉ chạy ứng dụng local
+APP_URL="http://localhost:3000"
+
+# Khóa bảo mật phiên đăng nhập (nên đặt 1 chuỗi ngẫu nhiên dài)
+AUTH_SECRET="chuoi-bi-mat-tuy-chon-cua-ban"
+
+# TÙY CHỌN: Để trống nếu muốn dùng SQLite cục bộ (chạy ngay không cần cấu hình DB ngoài)
+MONGODB_URI=""
+MONGODB_DB_NAME="master"
+
+# TÙY CHỌN: Để trống nếu muốn lưu ảnh upload vào thư mục /uploads cục bộ
+CLOUDINARY_CLOUD_NAME=""
+CLOUDINARY_API_KEY=""
+CLOUDINARY_API_SECRET=""
+CLOUDINARY_UPLOAD_FOLDER="master"
+
+4. Khởi chạy dự án (Development)
+Chạy lệnh sau trong Terminal của IDE:
+Bash
+npm run dev
+Lệnh này sẽ khởi động đồng thời Backend Express + Vite Dev Server trên cổng 3000.
+Khi thấy thông báo:
+Text
+ClinicCare server running on http://0.0.0.0:3000
+Hãy mở trình duyệt và truy cập: http://localhost:3000
+5. Tài khoản mẫu để kiểm thử nhanh
+Dữ liệu mẫu được seed sẵn khi khởi động lần đầu:
+
+tài khoản để test
+
+CLINIC CARE
+Bệnh nhân: an.nguyen@gmail.com / Patient@123
+Bác sĩ: minh.bs@cliniccare.vn / Doctor@123
+Quản trị viên: admin@cliniccare.vn / Admin@123
